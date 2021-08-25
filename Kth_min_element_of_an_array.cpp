@@ -114,17 +114,7 @@ cout<<"\n";
     for (int i = size-1; i >0; i--)
     {
         swap(arr,0,i);
-        cout<<"\nAfter swap: ";
-       for (int i = 0; i < size; i++)
-       {
-        cout<<arr[i]<<" ";
-        }
         heapify(arr,i-1,0);
-         cout<<"\nAfter heapify: ";
-       for (int i = 0; i < size; i++)
-       {
-        cout<<arr[i]<<" ";
-        }
         
     }
 
@@ -133,7 +123,7 @@ cout<<"\n";
     {
         cout<<arr[i]<<" ";
     }
-    cout<<endl<<"\nKth element is: "<<arr[size-nth-1];
+    cout<<endl<<"\nKth element is: "<<arr[nth-1];
 
  return 0;
     
