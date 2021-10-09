@@ -2,7 +2,10 @@
 #include<vector>
 using namespace std;
 
-void sort(vector<int>&arr){
+
+/* METHOD-1 
+Sorting using simple if else and variable
+void sort_without_any_sort_algo(vector<int>&arr){
     int count1=0,count2=0,count3=0;
     vector<int>arr2;
     for (int i = 0; i < arr.size(); i++)
@@ -14,10 +17,6 @@ void sort(vector<int>&arr){
       else
       count3++; 
     }
-    // cout<<"0 element is : "<<count1<<endl;
-    // cout<<"1 element is : "<<count2<<endl;
-    // cout<<"2 element is : "<<count3<<endl;
-
     for (int i = 0; i < arr.size(); i++)
     {
         if ( i < count1 )
@@ -37,6 +36,76 @@ void sort(vector<int>&arr){
     
     return ;
 }
+*/
+
+
+
+/* METHOD-2
+void swap(vector<int>&arr, int i ,int j){
+  int tmp=arr[i];
+  arr[i]=arr[j];
+  arr[j]=tmp;
+  return;
+}
+
+void sort_without_any_sort_algo(vector<int>&arr){
+  int i=0, j=0;
+  while(j < arr.size()){
+    if ( arr[j]==0)
+    {swap(arr, i,j);
+      i++;
+    }
+    j++;
+    
+  }
+  i=arr.size()-1;
+  j=arr.size()-1;
+  while( j >= 0 ){
+    if(arr[j]==2){
+      swap(arr,j,i);
+      i--;
+    }
+    j--;
+  }
+
+ return;
+}
+*/
+
+// METHOD-3 DUTCH National Flag Algorithm
+void swap(vector<int>&arr, int i ,int j){
+  int tmp=arr[i];
+  arr[i]=arr[j];
+  arr[j]=tmp;
+  return;
+}
+
+void sort_without_any_sort_algo(vector<int>&arr){
+  int i=0, j=0, h=arr.size()-1;
+  while(j <= h){
+    if ( arr[j]==0)
+    {swap(arr, i,j);
+      i++;
+      j++;
+    }
+    else {
+            if ( arr[j]==2)
+              {swap(arr, h,j);
+              h--;
+              }
+            else
+            j++;
+         }
+  }
+
+ return;
+}
+
+
+
+
+
+
 
 int main(){
     int size,tmp;
@@ -49,7 +118,13 @@ int main(){
      cin>>tmp;
      arr.push_back(tmp);
     }
-    sort(arr);
+    sort_without_any_sort_algo(arr);
+    cout<<"Element after tunning: ";
+    for (int  i = 0; i < arr.size(); i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    
 
     return 0;
     
