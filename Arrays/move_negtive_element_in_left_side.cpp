@@ -9,17 +9,59 @@ void swap(int* arr, int i, int j){
     return;
 }
 
+/*  TWO POINTER APPROACH
+
+Time complexity = O(N+N)= O(N)
+space complexity= O(1)
+
 void move_negative_element(int* arr, int size){
     int i=0, j=0;
     while( j< size){
         if (arr[j] < 0 )
         {
-            swap(arr,i,j);
+            if( i !=  j)
+             swap(arr,i,j);
+             
             i++;
         }
         j++;
         
     }
+}
+*/
+
+// Single pass approach
+void move_negative_element(int* arr, int size){
+    int left=0, right=size-1;
+    while( left < right ){
+        if(  arr[left] > 0 && arr[right] > 0 ){
+            right--;
+        }
+        else{
+            if ( arr[left] >0 && arr[right] < 0  )
+            {
+                swap(arr, left, right);
+                left++;
+                right--;
+            }
+            else{
+                if ( arr[left] < 0 && arr[right] > 0 )
+                {
+                    left++;
+                    right--;
+                }
+                else{
+                    left++;
+                }
+                
+            }
+            
+        }
+
+        
+    }
+
+    return; 
 }
 
 int main(){
