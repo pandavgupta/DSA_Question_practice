@@ -42,7 +42,7 @@ void swap(vector <int> &arr, int position1, int position2)
 
 void selection_sort(vector<int>&arr)
 {
-    int  flag=0, pos;
+    int  pos;
     for(int i = 0 ; i < arr.size()-1 ;i++ )
     {
         pos = i;
@@ -50,14 +50,12 @@ void selection_sort(vector<int>&arr)
         {
            if( arr[j] < arr[pos])
            {
-               flag=1;
                pos=j;
            }
            
         }
 
-        if(flag)
-           swap(arr,pos,i);
+        swap(arr,pos,i);
         
         
     }
@@ -70,10 +68,10 @@ void selection_sort(vector<int>&arr)
 void insertion_sort(vector<int>&arr)
 {    
     int j , tmp ;
-    for(int i = 0 ; i < arr.size()-1 ; i++ )
+    for(int i = 1 ; i < arr.size() ; i++ )
     {
-        j=i+1;
-        tmp=arr[j];
+        j=i;
+        tmp=arr[i];
         while ( j > 0 &&  arr[j-1] > tmp )
         {
             arr[j]=arr[j-1];
@@ -83,6 +81,7 @@ void insertion_sort(vector<int>&arr)
 
     }
 }
+
 
 
 
