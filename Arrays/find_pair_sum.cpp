@@ -1,7 +1,8 @@
 #include<iostream>
 #include<unordered_map>
 using namespace std;
-
+// Expected Time Complexity: O(N)
+// Expected Auxiliary Space: O(N)
 int find_sum_pair(int* arr, int n, int k){
      int count=0;
         unordered_map<int,int>map;
