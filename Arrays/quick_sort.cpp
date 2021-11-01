@@ -1,17 +1,16 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 
-void swap(vector<int>&arr, int pos1, int pos2){
-    int tmp=arr[pos1];
-    arr[pos1]=arr[pos2];
-    arr[pos2]=tmp;
+void swap(int *pos1, int *pos2){
+    int tmp = *pos1;
+    *pos1 = *pos2;
+    *pos2 = tmp;
 
     return;
 
 }
-
-int partition(vector<int>&arr, int pivot, int last){
+// pivot at starting position
+/* int partition(vector<int>&arr, int pivot, int last){
     int i = pivot+1, j = last;
     while( i <= j )
         {
@@ -20,16 +19,39 @@ int partition(vector<int>&arr, int pivot, int last){
             while(  arr[pivot] <= arr[j] && j>=pivot)
                j--;
             if(i< j)
-            swap(arr,i,j);
+            swap(&arr[i],&arr[j]);
         }
         if(j>=pivot)
-        swap(arr,pivot,j);
+        swap(&arr[pivot],&arr[j]);
     return j;
+
+}
+*/
+
+// pivot at last position
+
+ int partition(int* arr, int start, int pivot){
+    
+    int i = start-1, j;
+    for (int j=start ; j < pivot; j++)
+    {
+        if( arr[j] < arr[pivot])
+        {
+            i++;
+            swap(&i, &j);
+        }
+        
+    }
+    swap(&arr[i+1],&arr[pivot]);
+    
+
+    
+    return i+1;
 
 }
 
 
-void quick_sort(vector<int> &arr, int start, int last  ){
+void quick_sort(int* arr, int start, int last  ){
 
     if( start < last ){
         int pivot_pos;
@@ -49,13 +71,13 @@ void quick_sort(vector<int> &arr, int start, int last  ){
 int main()
 {
     int tmp, size;
-    vector<int>arr;
+    int *arr;
     cout<<"Enter the size of array: ";
     cin>>size;
+    arr = new int[size];
     cout<<"Enter the element of array : ";
     for(int i=0 ; i<size; i++){
-        cin>>tmp;
-        arr.push_back(tmp);
+        cin>>arr[i];
     }
     quick_sort(arr,0,size-1);
     cout<<"Array after quick sort: ";
