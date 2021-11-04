@@ -1,4 +1,4 @@
-// Find	the	first	repeating	element	position in	an	array	of	integers. 
+// Find	the	first	repeating	element	in	an	array	of	integers. 
 #include <iostream>
 #include<unordered_map>
 
@@ -9,22 +9,15 @@ int firstRepeated(int* arr, int n) {
         unordered_map<int,int>m;
         
         for(int i=0; i<n; i++){
-            if(m.find(arr[i])!=m.end()){
-                m[arr[i]]+=n;
-            }
-            else
-            m[arr[i]]=i+n;
+            m[arr[i]]++;
         }
         for(int i=0; i<n; i++){
-            if(m[arr[i]]/n > 1)
-            {   
-               value=(m[arr[i]]%n)+1;
-               break;
-            }
+            if(m[arr[i]] == 1)
+            return arr[i];
             
         }
     
-    return value;
+    return -1;
     }
 
 int main(){
@@ -43,7 +36,7 @@ int main(){
    
   value =  firstRepeated(arr, size);
    
-   cout<<"first repeated element (-1 means Null): "<<value;
+   cout<<"first non-repeated element (-1 means Null): "<<value;
    
    
    delete arr; 
