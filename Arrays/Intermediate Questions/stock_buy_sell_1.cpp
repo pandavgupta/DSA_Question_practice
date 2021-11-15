@@ -1,5 +1,6 @@
 //Buy and sell one stock with maximum profit.
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 //time complexity O(n^2).
@@ -23,16 +24,24 @@ int stock(int *arr, int size){
  int max_profit=0,min_element=arr[0];
 
  for (int i = 0; i < size; i++)
- {
-    if ( min_element > arr[i])
-    min_element=arr[i];
-    else if ((arr[i]-min_element) > max_profit )
-    max_profit = arr[i]-min_element;
+ {  
+    max_profit = max(max_profit, arr[i]-min_element);
+    min_element = min(min_element, arr[i]); 
+        
  }
 
  return max_profit;
  
 }
+//above two line max_profit,min_element can also be written as
+/*
+if ( min_element > arr[i])
+            min_element=arr[i];
+        else if ((arr[i]-min_element) > max_profit )
+            max_profit = arr[i]-min_element;
+*/
+
+
 
 
 int main(){
