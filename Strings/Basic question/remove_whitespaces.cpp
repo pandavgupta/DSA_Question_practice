@@ -55,9 +55,10 @@ using namespace std;
                 last++; 
         }
 
-        if(s[last]==' ')
+        if(s[last-1]==' ')
         last--;
         s.resize(last);
+        
         return s;
         
     }
