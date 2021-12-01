@@ -1,28 +1,19 @@
 // program	to	remove	Duplicate	characters	from the String printing output in sorted manner.
+//complexity is O(n) space O(1).
 #include<iostream>
 using namespace std;
 void removeDuplicate(string &s){
     char str[128]={0};
-    for (int i=0; i < s.size(); i++)
-       str[s[i]]++;
-    s.clear();
-    
-    for (int i = 65; i <91; i++)
+    int index=0;
+    for (int i = 0; i <=s.size(); i++)
     {
-       if(str[i]>=1){
-           s.push_back(char(i));
-           str[i]=0;
-       }
-       
+        if(str[s[i]]==0){
+            s[index++]=s[i];
+            str[s[i]]++;
+        }
+
     }
-    
-    for (int i = 97; i <123; i++)
-    {
-       if(str[i]>=1){
-           s.push_back(char(i));
-           str[i]=0;
-       }
-    }
+    s.resize(index);
 
 }
 int main(){
