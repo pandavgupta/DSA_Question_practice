@@ -1,5 +1,8 @@
 #include<iostream>
 using namespace std;
+
+/*
+
 bool isPalindrome(string s, int start, int last){
       for(int i=start; i<=start+(last-start)/2; i++){
          if(s[i]!=s[start+last-i])
@@ -7,6 +10,7 @@ bool isPalindrome(string s, int start, int last){
       }
       return true;
   }
+  
   
     string longestPalin (string S) {
         string a;
@@ -31,6 +35,25 @@ bool isPalindrome(string s, int start, int last){
 
         return a;
         
+    }
+    */
+
+bool isPalindrome(string s){
+      for(int i=0; i <=s.size()/2; i++){
+         if(s[i]!=s[s.size()-i-1])
+         return false;
+      }
+      return true;
+  }
+
+   string longestPalin (string S) {
+        for(int i=0; i<S.size(); i++){
+            for(int j=0; j<=i;j++){
+                if(  isPalindrome(S.substr(j,S.size()-i)))
+                return S.substr(j,S.size()-i);
+            }
+        }
+   return "";
     }
 
 int main(){
