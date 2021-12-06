@@ -1,14 +1,15 @@
 #include<iostream>
 using namespace std;
-//Power-logarithmic
-void tower_hanoi(int n1, int n2, int n3, int n4){
+//Tower of hanoi
+void tower_hanoi(int n, int A, int B, int C){
     
-     if(n1==2){
-         cout<<n2<<"-->"<<n4<<endl;
-         cout<<n2<<"-->"<<n4<<endl;
-     }
-     tower_hanoi(n1-1,n2,n3,n4);
+     if(n==0)
+        return;
+    tower_hanoi(n-1,A,C,B);
+    cout<<n<<" disk "<<A<<" --> "<<B<<endl;
+    tower_hanoi(n-1,C,B,A);
 }
+
 int main(){
     int n1,n2,n3,n4;
     cout<<"Enter number of disk:";
