@@ -5,6 +5,7 @@
         "cmath": "cpp",
         "random": "cpp",
         "new": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "numeric": "cpp"
     }
 }
