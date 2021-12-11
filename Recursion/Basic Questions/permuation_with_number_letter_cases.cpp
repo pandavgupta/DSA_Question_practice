@@ -7,7 +7,7 @@ void permutation(string s, string op){
     }
 
 
-    if( int(s[0]) >= 48 &&   int(s[0]) <= 57 ){
+    if( isdigit(s[0])){
     op.push_back((s[0]));
     s.erase(s.begin()+0);
     permutation(s,op);
