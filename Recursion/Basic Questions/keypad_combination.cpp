@@ -19,6 +19,30 @@ void keypad(string ip, string op){
     return;
     
 }
+/*
+for returning vector value
+
+vector<string> keypad(string ip, vector<string> result=vector<string>(),string op=""){
+    if(ip.size()==0){
+        result.push_back(op);
+        return result;
+    }
+    
+    int loop=codes[stoi(ip.substr(0,1))-1].length();
+    for(int i=0; i < loop;  i++ ){
+      string op1=op;
+      string ip1=ip;
+      op1.push_back(codes[stoi(ip.substr(0,1))-1][i]);
+      ip1.erase(ip1.begin()+0);
+      result=keypad(ip1,result,op1) ;
+    }
+    return result;
+    
+}
+
+*/
+
+
 int main(){
     string s1;
     cout<<"Enter the string:";
