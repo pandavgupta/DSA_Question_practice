@@ -12,7 +12,7 @@ void display(vector<vector<int>>& chess) {
   }
   cout << endl;
 }
-void printKnightsTour(vector<vector<int>> chess, int r, int c, int upcomingMove) {
+void printKnightsTour(vector<vector<int>> &chess, int r, int c, int upcomingMove) {
    if( r<0 || c<0  || r>=chess[0].size() || c>=chess.size()  || chess[r][c]>0)
      return;
    else if(chess.size()* chess.size()==upcomingMove){
