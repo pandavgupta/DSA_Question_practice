@@ -1,15 +1,16 @@
 #include<iostream>
 using namespace std;
 
-int knapsack(int wt[], int profit[], int W, int N){
-    if(W==0 || N==0)
-      return 0;
-    if ( wt[N]>W)
-      return knapsack(wt,profit, W, N-1);
-    else
-      return max(knapsack(wt,profit, W, N-1),profit[N]+knapsack(wt,profit, W-wt[N], N-1));  
-    
+int knapsack(int *weight,int *profit, int W, int N){
+  if (W== 0 || N==0)
+   return 0;
+  if(weight[N-1]<=W)
+  return max(knapsack(weight,profit,W,N-1), profit[N-1] + knapsack(weight,profit,W-weight[N-1],N-1));
+  else
+  return knapsack(weight,profit,W,N-1);
+
 }
+
 
 int main(){
     int *weight, *profit, W,N;
@@ -25,7 +26,7 @@ int main(){
     cout<<" Enter the profit :";
     for (int i = 0; i < N; i++)
     cin>>profit[i];
-    cout<<"Maximum profit is: "<<knapsack(weight,profit,W,N-1);
+    cout<<"Maximum profit is: "<<knapsack(weight,profit,W,N);
 
 return 0;
 }
