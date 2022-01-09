@@ -20,7 +20,7 @@ int main(){
     cin>>N;
     weight= new int(N);
     profit= new int(N);
-    cout<<" Enter the weight :";
+    cout<<" Enter dthe weight :";
     for (int i = 0; i < N; i++)
     cin>>weight[i];
     cout<<" Enter the profit :";
