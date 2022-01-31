@@ -8,6 +8,9 @@
         "*.tcc": "cpp",
         "numeric": "cpp",
         "functional": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "algorithm": "cpp"
     }
 }
