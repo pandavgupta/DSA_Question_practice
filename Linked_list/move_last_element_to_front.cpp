@@ -55,7 +55,7 @@ int main(){
     print_list(head);
     cout<<"\n";
      head= move_last_to_front(head);
-    cout<<"Element after pair wise swapping: ";
+    cout<<"Element after moving: ";
     print_list(head);
 
  return 0;
