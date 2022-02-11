@@ -20,7 +20,25 @@ void print_list(ListNode* headptr){
      cout<<(headptr->key)<<" ";
      headptr= headptr->next;
   }
+  cout<<"\n";
+  return;
   
+}
+
+void  create_loop(ListNode* head, int index_first){
+    ListNode* it = head;
+    ListNode* prev=nullptr;
+    int count=0;
+    while (it->next!=nullptr)
+    {
+        if(index_first==count){
+          prev = it;
+        }
+        it=it->next;
+        count++;
+    }
+    it->next=prev;
+    return ;
 }
 
 bool detect_loop(ListNode* head){
@@ -47,9 +65,11 @@ int main(){
     }
     cout<<"Element in linked list: ";
     print_list(head);
-    cout<<"\n";
+    // for creating loop
+    cout<<"enter index connect to last index: ";
+    cin>>n;
+    create_loop(head,n);
     cout<<"LOOP is present or not: ";
     cout<<detect_loop(head);
-
     return 0;
 }
