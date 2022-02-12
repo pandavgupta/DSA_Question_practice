@@ -24,23 +24,70 @@ void print_list(ListNode* headptr){
   }
   
 }
-//Add 1 to a number represented as linked list
-ListNode* addOne(ListNode *curr) 
+//#### Method-1: Add 1 to a number represented as linked list using recursive method
+ListNode* adding_carry(ListNode *curr) 
     {
         if(curr->next==nullptr){
             curr->key=curr->key+1;
             return curr;
         }
         
-        ListNode* Next=addOne(curr->next);
-        if(Next->key >9){
+        ListNode* Next=adding_carry(curr->next);
+        if(Next->key/10){
             Next->key=0;
              curr->key=curr->key+1;
         }
         return curr;
     }
 
+ListNode* addOne(ListNode* head){
+    head= adding_carry(head);
+    if(head->key/10){
+        ListNode* newNode = new ListNode(1);
+        head->key=0;
+        newNode->next=head;
+        head=newNode;
+    }
+    return head;
+}
 
+
+// <----------------------------------------------------->
+//##### Method-2 : Reversing the element then adding 1
+// ListNode* reverse(ListNode* head){
+//     ListNode* prev=nullptr;
+//     ListNode* tmp=nullptr;
+//     while(head!=nullptr){
+//       tmp=head->next;
+//       head->next=prev;
+//       prev=head;
+//       head=tmp;
+//     }
+//     return prev;
+// }
+
+// ListNode* addOne(ListNode *head){
+     
+//      head = reverse(head);
+//      ListNode* it=head;
+//      int carry=1;
+//      while(it!=nullptr){
+//          it->key=(it->key+carry)%10;
+//          carry=(it->key)>0?0:1;
+//          if(carry){
+//              if(it->next==nullptr){
+//                  ListNode* newNode=new ListNode(0);
+//                  it->next=newNode;
+//              }
+//              it = it->next;
+//          }
+//          else
+//          break;
+//      }
+//      head=reverse(head);
+//      return head;
+     
+// }
 
 int main(){
     ListNode* head = new ListNode();
