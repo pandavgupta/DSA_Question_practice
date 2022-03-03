@@ -107,19 +107,17 @@ class Solution
     {
         unordered_map<int,int>mymap;
         queue<pair<int,Node*>>myqueue1;
-         queue<pair<int,Node*>>myqueue2;
-         pair<int,Node*> it ;
-         vector<int>arr;
-        // mymap.insert({0,make_pair(0,root->data)});
+        pair<int,Node*> it ;
+        vector<int>arr;
         myqueue1.push(make_pair(0,root));
         int m_left = 0;
         int m_right = 0;
-        while(!myqueue1.empty()){
+       
             
             while(!myqueue1.empty()){
                 it = myqueue1.front();
-                if(it.second->left!=nullptr)  myqueue2.push(make_pair(it.first -1,it.second->left));
-                if(it.second->right!=nullptr) myqueue2.push(make_pair(it.first +1,it.second->right));
+                if(it.second->left!=nullptr)  myqueue1.push(make_pair(it.first -1,it.second->left));
+                if(it.second->right!=nullptr) myqueue1.push(make_pair(it.first +1,it.second->right));
                 
                 if(mymap.find( it.first ) == mymap.end()){
                     mymap.insert({it.first,it.second->data});
@@ -135,12 +133,7 @@ class Solution
                 
                 myqueue1.pop();
             }
-            if(myqueue2.empty()) break;
-            while(!myqueue2.empty()){
-                myqueue1.push(myqueue2.front());
-                myqueue2.pop();
-            }
-        }
+           
         
         for(int j = m_left; j<=m_right; j++ )
           arr.push_back(mymap[j]);
