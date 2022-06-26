@@ -1,0 +1,24 @@
+Binary search :
+        1) binary search is applied to sorted array.
+        2) Binary search can also be applied to un sorted array:
+                            * these are called binary search on answer.
+
+       question : split array largest sum
+
+       binary seach on answer : here it is sum 
+       7 2 5 10 8
+minimum           maxmium sum
+sum
+
+* in minimum we have atleast one element so minimum sum = 10
+* in maxmium sum is sum of all element : 32
+
+mid will calculated using their division, let say in this example we 
+  have to split into 2 part , m = 2
+  so mid = (min+ max)/m;
+
+  mid = (10+32)/2
+   maxmium mid can be 21 in the array.
+
+   can we check if there is 2 subarray possible if sum of each sum array is 21.
+   
