@@ -9,31 +9,56 @@ class TreeNode {
         TreeNode(int val): val(val), left(NULL), right(NULL) {}
 
 };
+// Method-1
+// class Solution {
+// public:
+//     int ans;
+//     void helper(TreeNode* root, vector<int>&hash){
+//         if(!root) return ;
+//         if(!root->left && !root->right){
+//             hash[root->val]++;
+//             int odd_count{};
+//             for(int i = 1; i < 10; i++){
+//                 if(hash[i]&1) odd_count++;
+//             }
+//             hash[root->val]--;
+//             if(odd_count > 1) return  ;
+//             ans++;
+//             return ;
+//         }
+//         hash[root->val]++;
+//         helper(root->left, hash);
+//         helper(root->right, hash);
+//         hash[root->val]--;
+//         return ;
+//     }
+//     int pseudoPalindromicPaths (TreeNode* root) {
+//         vector<int>hash(10);
+//         ans = 0;
+//         helper(root, hash);
+//         return ans;
+//     }
+// };
+// Method-2
 class Solution {
 public:
-    int helper(TreeNode* root, vector<int>&hash, int node){
-        if(!root) return 0;
+    int ans;
+    void helper(TreeNode* root,int path){
+        if(!root) return ;
+        path = path^(1<<root->val);
         if(!root->left && !root->right){
-            node++;
-            hash[root->val]++;
-            int odd_count{};
-            for(int i = 1; i < 10; i++){
-                if(hash[i]&1) odd_count++;
-            }
-            hash[root->val]--;
-            if(odd_count > 1) return  0;
-            return 1;
+            if((path & (path-1)) == 0) ans++;
+            return ;
         }
-        hash[root->val]++;
-        int ans{};
-        ans += helper(root->left, hash, node+1);
-        ans += helper(root->right, hash, node+1);
-        hash[root->val]--;
-        return ans;
+        helper(root->left, path);
+        helper(root->right, path);
+        return ;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
-        vector<int>hash(10);
-        return helper(root, hash, 0);
+        ans = 0;
+        int path = 0;
+        helper(root, path);
+        return ans;
     }
 };
 TreeNode* createTree(vector<string>&arr, int i){
@@ -54,6 +79,5 @@ int main(){
     TreeNode* root = createTree(arr, 0);
     Solution obj;
     cout<<obj.pseudoPalindromicPaths(root)<<endl;
-    cout<<'\n';
     return 0;
 }
